@@ -1,5 +1,5 @@
 # Triqui
 
-### Tres en raya 
+### Tres en raya
 
 ### [Deployment](https://triquii.vercel.app/)
