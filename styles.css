@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Silkscreen', sans-serif;
+}
+
+td {
+    font-size: 100px;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
