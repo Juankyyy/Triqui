@@ -14,16 +14,35 @@ td {
     cursor: pointer;
 }
 
+#darkMode {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #000;
+    padding: 5px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    fill: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark {
+    background-color: #222;
+    color: #fff;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 25px;
     height: 100dvh;
 }
 
 #title {
-    margin-bottom: 25px;
     font-size: 28px;
 }
 
