@@ -20,3 +20,11 @@ td {
     align-items: center;
     height: 100dvh;
 }
+
+@media (max-width: 625px) {
+    td {
+        font-size: 50px;
+        width: 100px;
+        height: 100px;
+    }
+}
