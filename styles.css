@@ -6,6 +6,10 @@
     font-family: 'Silkscreen', sans-serif;
 }
 
+body {
+    transition: background-color 1s, color 1s;
+}
+
 td {
     font-size: 100px;
     text-align: center;
@@ -26,6 +30,7 @@ td {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 1s, fill 1s;
 }
 
 .dark {
