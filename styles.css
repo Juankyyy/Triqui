@@ -16,9 +16,15 @@ td {
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100dvh;
+}
+
+#title {
+    margin-bottom: 25px;
+    font-size: 28px;
 }
 
 @media (max-width: 625px) {

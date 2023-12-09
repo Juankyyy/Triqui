@@ -1,27 +1,31 @@
-const a1 = document.querySelector("#a1")
-const a2 = document.querySelector("#a2")
-const a3 = document.querySelector("#a3")
+const title = document.querySelector("#title");
 
-const b1 = document.querySelector("#b1")
-const b2 = document.querySelector("#b2")
-const b3 = document.querySelector("#b3")
+const a1 = document.querySelector("#a1");
+const a2 = document.querySelector("#a2");
+const a3 = document.querySelector("#a3");
 
-const c1 = document.querySelector("#c1")
-const c2 = document.querySelector("#c2")
-const c3 = document.querySelector("#c3")
+const b1 = document.querySelector("#b1");
+const b2 = document.querySelector("#b2");
+const b3 = document.querySelector("#b3");
+
+const c1 = document.querySelector("#c1");
+const c2 = document.querySelector("#c2");
+const c3 = document.querySelector("#c3");
 
 let ganar = false;
 let turno = 0;
 let ronda = (posicion) => {
     turno++;
     if (turno % 2 == 0) {
+        title.textContent = "Turno de: X";
         posicion.innerHTML != "" ? console.log("Ya hay algo aquí") : posicion.append("o");
     } else {
+        title.textContent = "Turno de: O";
         posicion.innerHTML != "" ? console.log("Ya hay algo aquí") : posicion.append("x");
     }
-}
+};
 
-// while (!ganar) {
+
 a1.addEventListener("click", () => {
     ronda(a1);
 });
@@ -57,4 +61,3 @@ c2.addEventListener("click", () => {
 c3.addEventListener("click", () => {
     ronda(c3);
 });
-// };
