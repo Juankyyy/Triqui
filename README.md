@@ -1,5 +1,3 @@
 # Triqui
 
-### Tres en raya
-
-### [Deployment](https://triquii.vercel.app/)
+### Tic Tac Toe -> [Deployment](https://triquii.vercel.app/)
