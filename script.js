@@ -1,6 +1,7 @@
 const title = document.querySelector("#title");
 
 const body = document.querySelector("body")
+const tabla = document.querySelector("table");
 const dark = document.querySelector("#darkMode");
 let count = 1
 dark.addEventListener("click", () => {
@@ -11,13 +12,19 @@ dark.addEventListener("click", () => {
         dark.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M13 0h-2v4h2V0ZM0 11v2h4v-2H0Zm24 0v2h-4v-2h4ZM13 24h-2v-4h2v4ZM8 6h8v2H8V6ZM6 8h2v8H6V8Zm2 10v-2h8v2H8Zm10-2h-2V8h2v8Zm2-14h2v2h-2V2Zm0 2v2h-2V4h2Zm2 18h-2v-2h2v2Zm-2-2h-2v-2h2v2ZM4 2H2v2h2v2h2V4H4V2ZM2 22h2v-2h2v-2H4v2H2v2Z"/></svg>`;
         dark.style.backgroundColor = "#ffff00";
         dark.style.fill = "#000";
+        tabla.style.border = "3px solid #fff";
     } else {
         dark.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M6 2h8v2h-2v2h-2V4H6V2ZM4 6V4h2v2H4Zm0 10H2V6h2v10Zm2 2H4v-2h2v2Zm2 2H6v-2h2v2Zm10 0v2H8v-2h10Zm2-2v2h-2v-2h2Zm-2-4h2v4h2v-8h-2v2h-2v2Zm-6 0v2h6v-2h-6Zm-2-2h2v2h-2v-2Zm0 0V6H8v6h2Z"/></svg>`;
         dark.style.backgroundColor = "#000";
         dark.style.fill = "#fff";
+        tabla.style.border = "3px solid #000";
     }
 });
 
+const restart = document.querySelector("#restart");
+restart.addEventListener("click", () => {
+    reiniciar();
+})
 
 const a1 = document.querySelector("#a1");
 const a2 = document.querySelector("#a2");
@@ -44,39 +51,94 @@ let ronda = (posicion) => {
     }
 };
 
+mapa = {
+    row1: ["", "", ""],
+    row2: ["", "", ""],
+    row3: ["", "", ""]
+}
+
 a1.addEventListener("click", () => {
     ronda(a1);
+    turno % 2 == 0 ? mapa.row1[0] = "O" : mapa.row1[0] = "X";
 });
 
 a2.addEventListener("click", () => {
     ronda(a2);
-
+    turno % 2 == 0 ? mapa.row1[1] = "O" : mapa.row1[1] = "X";
 });
 
 a3.addEventListener("click", () => {
     ronda(a3);
+    turno % 2 == 0 ? mapa.row1[2] = "O" : mapa.row1[2] = "X";
 });
 
 b1.addEventListener("click", () => {
     ronda(b1);
+    turno % 2 == 0 ? mapa.row2[0] = "O" : mapa.row2[0] = "X";
 });
 
 b2.addEventListener("click", () => {
     ronda(b2);
+    turno % 2 == 0 ? mapa.row2[1] = "O" : mapa.row2[1] = "X";
 });
 
 b3.addEventListener("click", () => {
     ronda(b3);
+    turno % 2 == 0 ? mapa.row2[2] = "O" : mapa.row2[2] = "X";
 });
 
 c1.addEventListener("click", () => {
     ronda(c1);
+    turno % 2 == 0 ? mapa.row3[0] = "O" : mapa.row3[0] = "X";
 });
 
 c2.addEventListener("click", () => {
     ronda(c2);
+    turno % 2 == 0 ? mapa.row3[1] = "O" : mapa.row3[1] = "X";
 });
 
 c3.addEventListener("click", () => {
     ronda(c3);
+    turno % 2 == 0 ? mapa.row3[2] = "O" : mapa.row3[2] = "X";
 });
+
+
+function removeCasilla(element) {
+    console.log("removiendo...");
+
+    remove(element)
+}
+
+function remove(element) {
+    element.removeEventListener("click", removeCasilla)
+}
+
+function reiniciar() {
+    const casillas = [a1, a2, a3, b1, b2, b3, c1, c2, c3];
+
+    body.style.transition = "all 0.5s";
+    body.style.backgroundColor = "#000";
+    body.style.color = "#000";
+    tabla.removeAttribute("border");
+    
+    
+    setTimeout(() => {
+        body.style.transition = "";
+        body.style.backgroundColor = "";
+        body.style.color = "";
+        tabla.setAttribute("border", "2");
+        
+        title.textContent = "Turno de: X";
+        casillas.forEach((element) => {
+            element.textContent = "";
+        });
+    }, 800);
+}
+
+// function ganador() {
+//     console.log(Object.values(mapa));
+//     if (mapa.row1[0] == "X" && mapa.row1[1] == "X" && mapa.row1[2] == "X" || mapa.row2[0] == "X" && mapa.row2[1] == "X" && mapa.row2[2] == "X" || mapa.row3[0] == "X" && mapa.row3[1] == "X" && mapa.row3[2] == "X") {
+//         title.textContent = "Se terminó la partida! :D";
+//         alert("Hay un Ganador!!!");
+//     }
+// };

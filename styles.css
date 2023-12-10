@@ -18,6 +18,11 @@ td {
     cursor: pointer;
 }
 
+table {
+    border-collapse: collapse;
+    border: 3px solid #000;
+}
+
 #darkMode {
     position: absolute;
     top: 15px;
@@ -49,6 +54,19 @@ td {
 
 #title {
     font-size: 28px;
+}
+
+#restart {
+    padding: 5px 10px;
+    background-color: #00bbff;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0px 3px 5px #000;
+    transition: transform 0.3s;
+}
+
+#restart:hover {
+    transform: scale(1.2);
 }
 
 @media (max-width: 625px) {
