@@ -9,7 +9,7 @@ dark.addEventListener("click", () => {
     
     count++;
     if (count % 2 == 0) {
-        dark.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M13 0h-2v4h2V0ZM0 11v2h4v-2H0Zm24 0v2h-4v-2h4ZM13 24h-2v-4h2v4ZM8 6h8v2H8V6ZM6 8h2v8H6V8Zm2 10v-2h8v2H8Zm10-2h-2V8h2v8Zm2-14h2v2h-2V2Zm0 2v2h-2V4h2Zm2 18h-2v-2h2v2Zm-2-2h-2v-2h2v2ZM4 2H2v2h2v2h2V4H4V2ZM2 22h2v-2h2v-2H4v2H2v2Z"/></svg>`;
+        dark.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M13 3h-2v2h2V3zm4 2h2v2h-2V5zm-6 6h2v2h-2v-2zm-8 0h2v2H3v-2zm18 0h-2v2h2v-2zM5 5h2v2H5V5zm14 14h-2v-2h2v2zm-8 2h2v-2h-2v2zm-4-2H5v-2h2v2zM9 7h6v2H9V7zm0 8H7V9h2v6zm0 0v2h6v-2h2V9h-2v6H9z"/></svg>`;
         dark.style.backgroundColor = "#ffff00";
         dark.style.fill = "#000";
         tabla.style.border = "3px solid #fff";
@@ -119,14 +119,18 @@ function reiniciar() {
     body.style.transition = "all 0.5s";
     body.style.backgroundColor = "#000";
     body.style.color = "#000";
-    tabla.removeAttribute("border");
+    tabla.style.border = "3px solid #000";
+    restart.style.backgroundColor = "#000"
+    restart.style.color = "#000";
     
     
     setTimeout(() => {
+        restart.style.backgroundColor = "";
+        tabla.style.border = "3px solid";
         body.style.transition = "";
         body.style.backgroundColor = "";
         body.style.color = "";
-        tabla.setAttribute("border", "2");
+        restart.style.color = "";
         
         title.textContent = "Turno de: X";
         casillas.forEach((element) => {

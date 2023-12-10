@@ -35,7 +35,11 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 1s, fill 1s;
+    transition: background-color 1s, fill 1s, transform 0.3s;
+}
+
+#darkMode:hover {
+    transform: scale(1.2);
 }
 
 .dark {
@@ -57,16 +61,18 @@ table {
 }
 
 #restart {
+    background-color: #ff5d5d;
+    color: #fff;
     padding: 5px 10px;
-    background-color: #00bbff;
     cursor: pointer;
     border-radius: 8px;
     box-shadow: 0px 3px 5px #000;
-    transition: transform 0.3s;
+    transition: transform 0.5s, background-color 0.5s, color 0.5s;
 }
 
 #restart:hover {
     transform: scale(1.2);
+    background-color: #ff5d5d;
 }
 
 @media (max-width: 625px) {
