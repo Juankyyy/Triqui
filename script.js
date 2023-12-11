@@ -42,13 +42,17 @@ let ganar = false;
 let turno = 0;
 let ronda = (posicion) => {
     turno++;
-    if (turno % 2 == 0) {
-        title.textContent = "Turno de: X";
-        posicion.innerHTML != "" ? console.log("Ya hay algo aquí") : posicion.append("o");
+    if (turno % 2 != 0) {
+        posicion.innerHTML != "" ? turno-- : posicion.append("x");
+        turno % 2 == 0 ? title.textContent = "Turno de: X" : "";
+        title.textContent = "Turno de: O"
     } else {
-        title.textContent = "Turno de: O";
-        posicion.innerHTML != "" ? console.log("Ya hay algo aquí") : posicion.append("x");
+        posicion.innerHTML != "" ? turno-- : posicion.append("o");
+        turno % 2 != 0 ? title.textContent = "Turno de: O" : "";
+        title.textContent = "Turno de: X"
     }
+
+    turno == 9 ? title.textContent = "¿EMPATE?" : console.log(turno);
 };
 
 mapa = {
@@ -102,18 +106,8 @@ c3.addEventListener("click", () => {
     turno % 2 == 0 ? mapa.row3[2] = "O" : mapa.row3[2] = "X";
 });
 
-
-function removeCasilla(element) {
-    console.log("removiendo...");
-
-    remove(element)
-}
-
-function remove(element) {
-    element.removeEventListener("click", removeCasilla)
-}
-
 function reiniciar() {
+    turno = 0;
     const casillas = [a1, a2, a3, b1, b2, b3, c1, c2, c3];
 
     body.style.transition = "all 0.5s";
@@ -125,11 +119,11 @@ function reiniciar() {
     
     
     setTimeout(() => {
-        restart.style.backgroundColor = "";
-        tabla.style.border = "3px solid";
         body.style.transition = "";
         body.style.backgroundColor = "";
         body.style.color = "";
+        tabla.style.border = "3px solid";
+        restart.style.backgroundColor = "";
         restart.style.color = "";
         
         title.textContent = "Turno de: X";
@@ -138,11 +132,3 @@ function reiniciar() {
         });
     }, 800);
 }
-
-// function ganador() {
-//     console.log(Object.values(mapa));
-//     if (mapa.row1[0] == "X" && mapa.row1[1] == "X" && mapa.row1[2] == "X" || mapa.row2[0] == "X" && mapa.row2[1] == "X" && mapa.row2[2] == "X" || mapa.row3[0] == "X" && mapa.row3[1] == "X" && mapa.row3[2] == "X") {
-//         title.textContent = "Se terminó la partida! :D";
-//         alert("Hay un Ganador!!!");
-//     }
-// };
