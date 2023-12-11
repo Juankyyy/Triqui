@@ -43,13 +43,13 @@ let turno = 0;
 let ronda = (posicion) => {
     turno++;
     if (turno % 2 != 0) {
+        title.textContent = "Turno de: O"
         posicion.innerHTML != "" ? turno-- : posicion.append("x");
         turno % 2 == 0 ? title.textContent = "Turno de: X" : "";
-        title.textContent = "Turno de: O"
     } else {
+        title.textContent = "Turno de: X"
         posicion.innerHTML != "" ? turno-- : posicion.append("o");
         turno % 2 != 0 ? title.textContent = "Turno de: O" : "";
-        title.textContent = "Turno de: X"
     }
 
     turno == 9 ? title.textContent = "¿EMPATE?" : console.log(turno);
