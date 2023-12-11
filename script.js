@@ -42,20 +42,23 @@ let ganar = false;
 let turno = 0;
 let ronda = (posicion) => {
     turno++;
-    if (turno % 2 != 0) {
-        title.textContent = "Turno de: O"
-        posicion.innerHTML != "" ? turno-- : posicion.append("x");
-        turno % 2 == 0 ? title.textContent = "Turno de: X" : "";
-    } else {
-        title.textContent = "Turno de: X"
-        posicion.innerHTML != "" ? turno-- : posicion.append("o");
-        turno % 2 != 0 ? title.textContent = "Turno de: O" : "";
-    }
 
-    turno == 9 ? title.textContent = "¿EMPATE?" : console.log(turno);
+    if (!ganar) {
+        if (turno % 2 != 0) {
+            title.textContent = "Turno de: O"
+    
+            posicion.innerHTML != "" ? turno-- : posicion.append("x");
+            turno % 2 == 0 ? title.textContent = "Turno de: X" : "";
+        } else {
+            title.textContent = "Turno de: X"
+            posicion.innerHTML != "" ? turno-- : posicion.append("o");
+            turno % 2 != 0 ? title.textContent = "Turno de: O" : "";
+        }
+        turno == 9 ? title.textContent = "EMPATE" : "";
+    }
 };
 
-mapa = {
+let mapa = {
     row1: ["", "", ""],
     row2: ["", "", ""],
     row3: ["", "", ""]
@@ -64,58 +67,104 @@ mapa = {
 a1.addEventListener("click", () => {
     ronda(a1);
     turno % 2 == 0 ? mapa.row1[0] = "O" : mapa.row1[0] = "X";
+    ganador();
 });
 
 a2.addEventListener("click", () => {
     ronda(a2);
     turno % 2 == 0 ? mapa.row1[1] = "O" : mapa.row1[1] = "X";
+    ganador();
 });
 
 a3.addEventListener("click", () => {
     ronda(a3);
     turno % 2 == 0 ? mapa.row1[2] = "O" : mapa.row1[2] = "X";
+    ganador();
 });
 
 b1.addEventListener("click", () => {
     ronda(b1);
     turno % 2 == 0 ? mapa.row2[0] = "O" : mapa.row2[0] = "X";
+    ganador();
 });
 
 b2.addEventListener("click", () => {
     ronda(b2);
     turno % 2 == 0 ? mapa.row2[1] = "O" : mapa.row2[1] = "X";
+    ganador();
 });
 
 b3.addEventListener("click", () => {
     ronda(b3);
     turno % 2 == 0 ? mapa.row2[2] = "O" : mapa.row2[2] = "X";
+    ganador();
 });
 
 c1.addEventListener("click", () => {
     ronda(c1);
     turno % 2 == 0 ? mapa.row3[0] = "O" : mapa.row3[0] = "X";
+    ganador();
 });
 
 c2.addEventListener("click", () => {
     ronda(c2);
     turno % 2 == 0 ? mapa.row3[1] = "O" : mapa.row3[1] = "X";
+    ganador();
 });
 
 c3.addEventListener("click", () => {
     ronda(c3);
     turno % 2 == 0 ? mapa.row3[2] = "O" : mapa.row3[2] = "X";
+    ganador();
 });
 
-function reiniciar() {
-    turno = 0;
-    const casillas = [a1, a2, a3, b1, b2, b3, c1, c2, c3];
 
+let i = 0;
+function ganador() {
+    // Horizontales
+    mapa.row1[0] == "X" && mapa.row1[1] == "X" && mapa.row1[2] == "X" || mapa.row2[0] == "X" && mapa.row2[1] == "X" && mapa.row2[2] == "X" || mapa.row3[0] == "X" && mapa.row3[1] == "X" && mapa.row3[2] == "X" ? ganar = true : "";
+    mapa.row1[0] == "O" && mapa.row1[1] == "O" && mapa.row1[2] == "O" || mapa.row2[0] == "O" && mapa.row2[1] == "O" && mapa.row2[2] == "O" || mapa.row3[0] == "O" && mapa.row3[1] == "O" && mapa.row3[2] == "O" ? ganar = true : "";
+
+    // Verticales
+    mapa.row1[0] == "X" && mapa.row2[0] == "X" && mapa.row3[0] == "X" || mapa.row1[1] == "X" && mapa.row2[1] == "X" && mapa.row3[1] == "X" || mapa.row1[2] == "X" && mapa.row2[2] == "X" && mapa.row3[2] == "X" ? ganar = true : "";
+    mapa.row1[0] == "O" && mapa.row2[0] == "O" && mapa.row3[0] == "O" || mapa.row1[1] == "O" && mapa.row2[1] == "O" && mapa.row3[1] == "O" || mapa.row1[2] == "O" && mapa.row2[2] == "O" && mapa.row3[2] == "O" ? ganar = true : "";
+
+    // Diagonales
+    mapa.row1[0] == "X" && mapa.row2[1] == "X" && mapa.row3[2] == "X" || mapa.row3[0] == "X" && mapa.row2[1] == "X" && mapa.row1[2] == "X" ? ganar = true : "";
+    mapa.row1[0] == "O" && mapa.row2[1] == "O" && mapa.row3[2] == "O" || mapa.row3[0] == "O" && mapa.row2[1] == "O" && mapa.row1[2] == "O" ? ganar = true : "";
+
+    if (ganar) {
+        i++;
+        if (turno % 2 == 0 && i == 1) {
+            title.textContent = "Ganó la O!!";
+            title.style.color = "#adad00";
+        } else {
+            title.textContent = "Ganó la X!!";
+            title.style.color = "#815eff";
+        }
+    }
+};
+
+function reiniciar() {
+    console.log(mapa);
+    turno = 0;
+    ganar = false;
+    i = 0;
+    mapa = {
+        row1: ["", "", ""],
+        row2: ["", "", ""],
+        row3: ["", "", ""]
+    }
+    
+    const casillas = [a1, a2, a3, b1, b2, b3, c1, c2, c3];
+    
     body.style.transition = "all 0.5s";
     body.style.backgroundColor = "#000";
     body.style.color = "#000";
     tabla.style.border = "3px solid #000";
     restart.style.backgroundColor = "#000"
     restart.style.color = "#000";
+    title.style.color = "black";
     
     
     setTimeout(() => {
