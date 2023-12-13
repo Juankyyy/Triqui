@@ -134,15 +134,17 @@ function ganador() {
     // Diagonales
     mapa.row1[0] == "X" && mapa.row2[1] == "X" && mapa.row3[2] == "X" || mapa.row3[0] == "X" && mapa.row2[1] == "X" && mapa.row1[2] == "X" ? ganar = true : "";
     mapa.row1[0] == "O" && mapa.row2[1] == "O" && mapa.row3[2] == "O" || mapa.row3[0] == "O" && mapa.row2[1] == "O" && mapa.row1[2] == "O" ? ganar = true : "";
-
+    
     if (ganar) {
         i++;
+        
         if (turno % 2 == 0 && i == 1) {
-            title.textContent = "Ganó la O!!";
-            title.style.color = "#adad00";
-        } else {
+            title.textContent = "Ganó el O!!";
+            title.style.color = "#00bd84";
+            i = undefined;
+        } else if (i == NaN || i == 1) {
             title.textContent = "Ganó la X!!";
-            title.style.color = "#815eff";
+            title.style.color = "#00a5ce";
         }
     }
 };
@@ -157,8 +159,6 @@ function reiniciar() {
         row3: ["", "", ""]
     }
     
-    const casillas = [a1, a2, a3, b1, b2, b3, c1, c2, c3];
-    
     body.style.transition = "all 0.5s";
     body.style.backgroundColor = "#000";
     body.style.color = "#000";
@@ -167,7 +167,7 @@ function reiniciar() {
     restart.style.color = "#000";
     title.style.color = "#000";
     
-    
+    const casillas = [a1, a2, a3, b1, b2, b3, c1, c2, c3];
     setTimeout(() => {
         body.style.transition = "";
         body.style.backgroundColor = "";
